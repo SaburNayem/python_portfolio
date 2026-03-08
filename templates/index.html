@@ -1,214 +1,249 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ name }} | Flutter Mobile App Developer</title>
+    <meta name="description" content="Nayem Hossen portfolio: Flutter mobile apps, backend APIs, and interactive developer projects." />
+    <title>{{ name }} | {{ title }}</title>
     {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
-    <div class="bg-glow glow-a" aria-hidden="true"></div>
-    <div class="bg-glow glow-b" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
 
-    <header class="site-header wrap glass">
-        <div class="brand">NH</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <header class="main-header">
+        <div class="container nav-shell glass">
+            <a class="logo" href="#">NH</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button id="themeToggle" class="btn btn-sm btn-outline-light" type="button" aria-label="Toggle theme">Light</button>
+        </div>
     </header>
 
-    <main>
-        <section class="hero wrap">
-            <div class="hero-copy reveal">
-                <p class="eyebrow">Nayem Hossen</p>
-                <h1>Flutter Mobile App Developer</h1>
-                <p class="tagline">Building beautiful, high-performance mobile applications with Flutter.</p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#projects">View My Projects</a>
-                    <a class="btn btn-ghost" href="#contact">Contact Me</a>
+    <section class="lamp-stage" id="lamp-stage">
+        <canvas id="room-canvas" aria-label="3D desk scene"></canvas>
+        <div class="lamp-overlay container">
+            <h1>Switch On The Desk Lamp</h1>
+            <p>Click the lamp to reveal the full portfolio experience.</p>
+            <button id="lampToggle" class="btn btn-primary glow-btn" type="button">Turn Lamp On</button>
+        </div>
+    </section>
+
+    <main id="portfolio-content" class="portfolio-content content-hidden">
+        <section class="hero container section-pad reveal">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <p class="eyebrow">{{ name }}</p>
+                    <h2 class="hero-title">Flutter Mobile App Developer</h2>
+                    <p class="hero-lead">Building beautiful, high-performance mobile applications with Flutter.</p>
+                    <p class="hero-intro">I craft app experiences that feel fast, polished, and production-ready with modern architecture and smooth motion design.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <a href="#projects" class="btn btn-primary glow-btn">View My Projects</a>
+                        <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+                        <a href="{% static 'files/Nayem_Hossen_Resume.txt' %}" class="btn btn-outline-info" download>Download Resume</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-visual reveal">
-                <div class="phone-stack" data-parallax="18">
-                    <article class="phone-card floating slow">
-                        <div class="screen-header"></div>
-                        <div class="screen-line w-80"></div>
-                        <div class="screen-line w-55"></div>
-                        <div class="screen-chart"></div>
-                    </article>
-                    <article class="phone-card floating mid">
-                        <div class="flutter-icon" aria-hidden="true">
-                            <span class="kite kite-a"></span>
-                            <span class="kite kite-b"></span>
-                            <span class="kite kite-c"></span>
+                <div class="col-lg-5">
+                    <article class="glass profile-card floaty" data-depth="18">
+                        <div class="avatar">NH</div>
+                        <h3>{{ name }}</h3>
+                        <p>{{ title }}</p>
+                        <div class="skill-chips">
+                            <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Python APIs</span>
                         </div>
-                        <div class="screen-line w-65"></div>
-                        <div class="screen-line w-45"></div>
-                        <div class="screen-line w-75"></div>
-                    </article>
-                    <article class="chip-card floating fast" data-parallax="25">
-                        <p>60 FPS UI</p>
-                        <p>Firebase</p>
-                        <p>REST APIs</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section wrap">
-            <div class="section-title reveal">
-                <p class="eyebrow">About</p>
-                <h2>Mobile-first engineer focused on polished Flutter experiences</h2>
-            </div>
-            <div class="about-grid">
-                <article class="glass reveal lift-card">
-                    <p>
-                        I build modern Flutter apps with clean architecture, fluid motion, and production-grade performance.
-                        From onboarding to advanced interactive screens, I focus on usability and speed.
-                    </p>
-                </article>
-                <article class="glass reveal lift-card">
-                    <p>
-                        I integrate backend services and automate workflows through APIs, Firebase, and robust data pipelines,
-                        so each mobile app is ready for real users and business growth.
-                    </p>
-                </article>
-            </div>
-            <div class="timeline reveal">
-                <div class="timeline-item">
-                    <span class="dot"></span>
-                    <div>
-                        <h3>Planning &amp; UX Flow</h3>
-                        <p>User journey mapping, feature scoping, and wireframes.</p>
-                    </div>
+        <section id="about" class="container section-pad reveal">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-copy">I am a mobile developer focused on Flutter app development, performance optimization, and elegant user interactions. I enjoy building complete products from idea to deployment with clean code, scalable backend integrations, and user-friendly interfaces.</p>
+            <p class="section-copy">My goal is to deliver reliable mobile products that solve real business problems while keeping design, maintainability, and speed at the center.</p>
+        </section>
+
+        <section id="skills" class="container section-pad reveal">
+            <h2 class="section-title">Skills</h2>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <article class="glass skill-box lift">
+                        <h3>Programming</h3>
+                        <div class="skill-item"><span>Python</span><div class="bar"><i style="--w:88%"></i></div></div>
+                        <div class="skill-item"><span>JavaScript</span><div class="bar"><i style="--w:82%"></i></div></div>
+                        <div class="skill-item"><span>Dart</span><div class="bar"><i style="--w:93%"></i></div></div>
+                    </article>
                 </div>
-                <div class="timeline-item">
-                    <span class="dot"></span>
-                    <div>
-                        <h3>Flutter Build</h3>
-                        <p>Reusable widgets, state management, and animated interactions.</p>
-                    </div>
+                <div class="col-md-4">
+                    <article class="glass skill-box lift">
+                        <h3>Frameworks</h3>
+                        <div class="skill-item"><span>Flutter</span><div class="bar"><i style="--w:95%"></i></div></div>
+                        <div class="skill-item"><span>Flask</span><div class="bar"><i style="--w:78%"></i></div></div>
+                        <div class="skill-item"><span>Django</span><div class="bar"><i style="--w:82%"></i></div></div>
+                        <div class="skill-item"><span>React</span><div class="bar"><i style="--w:72%"></i></div></div>
+                    </article>
                 </div>
-                <div class="timeline-item">
-                    <span class="dot"></span>
-                    <div>
-                        <h3>Launch &amp; Optimize</h3>
-                        <p>Performance tuning, bug fixing, and production release support.</p>
-                    </div>
+                <div class="col-md-4">
+                    <article class="glass skill-box lift">
+                        <h3>Tools</h3>
+                        <div class="skill-item"><span>Git</span><div class="bar"><i style="--w:90%"></i></div></div>
+                        <div class="skill-item"><span>Firebase</span><div class="bar"><i style="--w:88%"></i></div></div>
+                        <div class="skill-item"><span>Docker</span><div class="bar"><i style="--w:70%"></i></div></div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section wrap">
-            <div class="section-title reveal">
-                <p class="eyebrow">Skills</p>
-                <h2>Core capabilities for modern mobile product delivery</h2>
-            </div>
-            <div class="skills-grid">
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">FL</span><h3>Flutter</h3></header>
-                    <div class="meter"><span style="--fill: 95%"></span></div>
-                </article>
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">DA</span><h3>Dart</h3></header>
-                    <div class="meter"><span style="--fill: 92%"></span></div>
-                </article>
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">API</span><h3>REST API Integration</h3></header>
-                    <div class="meter"><span style="--fill: 90%"></span></div>
-                </article>
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">FB</span><h3>Firebase</h3></header>
-                    <div class="meter"><span style="--fill: 88%"></span></div>
-                </article>
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">UX</span><h3>UI/UX Design</h3></header>
-                    <div class="meter"><span style="--fill: 86%"></span></div>
-                </article>
-                <article class="glass skill-card reveal lift-card">
-                    <header><span class="skill-icon">OPT</span><h3>Mobile Performance Optimization</h3></header>
-                    <div class="meter"><span style="--fill: 89%"></span></div>
-                </article>
+        <section id="projects" class="container section-pad reveal">
+            <h2 class="section-title">Projects</h2>
+            <div class="row g-3">
+                {% for project in projects %}
+                <div class="col-lg-6">
+                    <article class="glass project-card lift">
+                        <div class="project-image" style="background-image:url('{{ project.image_url|default:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=60' }}');"></div>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <p class="stack">{{ project.technologies }}</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-info">GitHub</a>{% endif %}
+                            {% if project.live_demo_url %}<a href="{{ project.live_demo_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light">Live Demo</a>{% endif %}
+                        </div>
+                    </article>
+                </div>
+                {% empty %}
+                <div class="col-12"><p class="empty-note">Add projects from Django admin to populate this section.</p></div>
+                {% endfor %}
             </div>
         </section>
 
-        <section id="projects" class="section wrap">
-            <div class="section-title reveal">
-                <p class="eyebrow">Projects</p>
-                <h2>Selected Flutter builds with interactive and scalable features</h2>
-            </div>
-            <div class="project-grid">
-                <article class="project-card glass reveal lift-card">
-                    <div class="preview preview-map" aria-hidden="true"></div>
-                    <h3>Flutter Map Navigator</h3>
-                    <p>Location-aware map app with address search, route views, and smooth camera transitions.</p>
-                    <p class="stack">Flutter, Dart, REST API, Map SDK</p>
-                    <a href="https://github.com/your-username/flutter-map-navigator" target="_blank" rel="noopener">GitHub Link</a>
+        <section id="experience" class="container section-pad reveal">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline glass">
+                {% for item in experiences %}
+                <article>
+                    <span></span>
+                    <div>
+                        <h3>{{ item.role }} - {{ item.company }}</h3>
+                        <small>{{ item.period }}</small>
+                        <p>{{ item.details }}</p>
+                    </div>
                 </article>
-                <article class="project-card glass reveal lift-card">
-                    <div class="preview preview-stream" aria-hidden="true"></div>
-                    <h3>StreamFlow Player</h3>
-                    <p>Video streaming mobile app with timeline controls, fullscreen mode, and adaptive quality UI.</p>
-                    <p class="stack">Flutter, Dart, Video Player</p>
-                    <a href="https://github.com/your-username/streamflow-player" target="_blank" rel="noopener">GitHub Link</a>
-                </article>
-                <article class="project-card glass reveal lift-card">
-                    <div class="preview preview-commerce" aria-hidden="true"></div>
-                    <h3>Commerce UI Kit App</h3>
-                    <p>Advanced e-commerce UI system with interactive cards, transitions, and checkout flows.</p>
-                    <p class="stack">Flutter, Firebase, UI Animation</p>
-                    <a href="https://github.com/your-username/commerce-ui-kit" target="_blank" rel="noopener">GitHub Link</a>
-                </article>
-                <article class="project-card glass reveal lift-card">
-                    <div class="preview preview-chat" aria-hidden="true"></div>
-                    <h3>Realtime Team Chat</h3>
-                    <p>Realtime mobile chat experience with rich message cards, status states, and notifications.</p>
-                    <p class="stack">Flutter, Firebase, Push Messaging</p>
-                    <a href="https://github.com/your-username/realtime-team-chat" target="_blank" rel="noopener">GitHub Link</a>
-                </article>
+                {% empty %}
+                <p class="empty-note">Add experience entries from admin.</p>
+                {% endfor %}
             </div>
         </section>
 
-        <section id="contact" class="section wrap">
-            <div class="section-title reveal">
-                <p class="eyebrow">Contact</p>
-                <h2>Let us build your next mobile app</h2>
+        <section id="education" class="container section-pad reveal">
+            <h2 class="section-title">Education</h2>
+            <div class="row g-3">
+                {% for item in educations %}
+                <div class="col-md-6">
+                    <article class="glass mini-card lift">
+                        <h3>{{ item.degree }}</h3>
+                        <p>{{ item.institution }} | {{ item.period }}</p>
+                        <small>{{ item.details }}</small>
+                    </article>
+                </div>
+                {% empty %}
+                <div class="col-12"><p class="empty-note">Add education records from admin.</p></div>
+                {% endfor %}
             </div>
-            <div class="contact-grid">
-                <article class="glass reveal lift-card">
-                    <ul class="contact-list">
-                        <li><strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a></li>
-                        <li><strong>GitHub:</strong> <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a></li>
-                        <li><strong>Fiverr:</strong> <a href="https://www.fiverr.com/your-username" target="_blank" rel="noopener">fiverr.com/your-username</a></li>
-                    </ul>
-                </article>
-                <form class="glass contact-form reveal lift-card" action="#" method="post">
-                    <input type="text" placeholder="Your Name" aria-label="Your Name" />
-                    <input type="email" placeholder="Your Email" aria-label="Your Email" />
-                    <textarea rows="4" placeholder="Project details" aria-label="Project details"></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+        </section>
+
+        <section id="services" class="container section-pad reveal">
+            <h2 class="section-title">Services</h2>
+            <div class="row g-3">
+                {% for item in services %}
+                <div class="col-md-3 col-sm-6"><article class="glass mini-card lift"><h3>{{ item.title }}</h3><p>{{ item.description }}</p></article></div>
+                {% empty %}
+                <div class="col-md-3 col-sm-6"><article class="glass mini-card lift"><h3>Web Development</h3><p>Modern web apps and dashboards.</p></article></div>
+                <div class="col-md-3 col-sm-6"><article class="glass mini-card lift"><h3>Mobile App Development</h3><p>Flutter app UI, state, and release support.</p></article></div>
+                <div class="col-md-3 col-sm-6"><article class="glass mini-card lift"><h3>UI/UX Design</h3><p>Clean interfaces with smooth interactions.</p></article></div>
+                <div class="col-md-3 col-sm-6"><article class="glass mini-card lift"><h3>API Development</h3><p>Backend APIs for secure app integration.</p></article></div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="certificates" class="container section-pad reveal">
+            <h2 class="section-title">Certificates</h2>
+            <div class="row g-3">
+                {% for item in certificates %}
+                <div class="col-md-4"><article class="glass mini-card lift"><h3>{{ item.name }}</h3><p>{{ item.issuer }} | {{ item.issue_year }}</p>{% if item.credential_url %}<a href="{{ item.credential_url }}" target="_blank" rel="noopener">View Credential</a>{% endif %}</article></div>
+                {% empty %}
+                <div class="col-12"><p class="empty-note">Add certificates from admin.</p></div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="blog" class="container section-pad reveal">
+            <h2 class="section-title">Blog</h2>
+            <div class="row g-3">
+                {% for post in blogs %}
+                <div class="col-md-4"><article class="glass mini-card lift"><h3>{{ post.title }}</h3><p>{{ post.excerpt }}</p></article></div>
+                {% empty %}
+                <div class="col-12"><p class="empty-note">Add blog posts from admin.</p></div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="testimonials" class="container section-pad reveal">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="row g-3">
+                {% for item in testimonials %}
+                <div class="col-md-4"><article class="glass mini-card lift"><h3>{{ item.client_name }}</h3><small>{{ item.title }}</small><p>{{ item.feedback }}</p></article></div>
+                {% empty %}
+                <div class="col-12"><p class="empty-note">Add testimonials from admin.</p></div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="contact" class="container section-pad reveal">
+            <h2 class="section-title">Contact</h2>
+            <div class="row g-3">
+                <div class="col-lg-5">
+                    <article class="glass mini-card h-100">
+                        <h3>Get In Touch</h3>
+                        <p>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
+                        <p>Phone: <a href="tel:{{ phone|cut:' ' }}">{{ phone }}</a></p>
+                        <p>Location: {{ location }}</p>
+                        <div class="social-links">
+                            <a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+                            <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="https://facebook.com/your-username" target="_blank" rel="noopener">Facebook</a>
+                            <a href="https://instagram.com/your-username" target="_blank" rel="noopener">Instagram</a>
+                            <a href="https://twitter.com/your-username" target="_blank" rel="noopener">Twitter</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-7">
+                    <form class="glass contact-form" action="{% url 'contact_submit' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-2">{{ contact_form.name }}</div>
+                        <div class="mb-2">{{ contact_form.email }}</div>
+                        <div class="mb-2">{{ contact_form.message }}</div>
+                        <button type="submit" class="btn btn-primary glow-btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer wrap">
-        <div class="socials">
-            <a href="https://github.com/your-username" target="_blank" rel="noopener">GH</a>
-            <a href="https://www.fiverr.com/your-username" target="_blank" rel="noopener">FV</a>
-            <a href="mailto:{{ email }}">EM</a>
-        </div>
-        <p>© {% now "Y" %} {{ name }}. Flutter Developer Portfolio.</p>
+    <footer class="container footer">
+        <p>© {% now "Y" %} {{ name }}. Built with Django, Three.js, Bootstrap, and GSAP.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
