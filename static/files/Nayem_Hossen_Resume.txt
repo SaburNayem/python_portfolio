@@ -1,0 +1,15 @@
+﻿Nayem Hossen Resume
+
+Title: Flutter Mobile App Developer
+Email: mdsabur9991@gmail.com
+Phone: +880 1000-000000
+Location: Dhaka, Bangladesh
+
+Summary:
+Flutter developer focused on high-performance mobile UI, API integration, and scalable product delivery.
+
+Core Skills:
+- Flutter, Dart
+- Firebase, REST API Integration
+- Django, Flask, Python Backend
+- UI/UX, Animation, Performance Optimization
