@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ name }} | Portfolio</title>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <header class="nav wrap">
+        <div class="brand">MNH</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <section class="hero reveal">
+            <p class="eyebrow">Django Portfolio Template</p>
+            <h1>{{ name }}</h1>
+            <p class="lead">I craft modern web experiences with strong visuals, clean code, and thoughtful user interactions.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#projects">View Work</a>
+                <a class="btn btn-ghost" href="mailto:{{ email }}">{{ email }}</a>
+            </div>
+            <div class="stats-grid">
+                <article>
+                    <h3>03+</h3>
+                    <p>Years Learning</p>
+                </article>
+                <article>
+                    <h3>20+</h3>
+                    <p>Practice Projects</p>
+                </article>
+                <article>
+                    <h3>100%</h3>
+                    <p>Customizable</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="panel reveal">
+            <h2>About Me</h2>
+            <p>This section is example content. Replace this paragraph with your full bio, experience, and skills.</p>
+            <div class="chips">
+                <span>Python</span><span>Django</span><span>REST API</span><span>JavaScript</span><span>UI Animation</span>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Example cards. Replace title, description, and links with your real projects.</p>
+            </div>
+            <div class="project-grid">
+                <article class="card">
+                    <h3>Project One</h3>
+                    <p>Short overview of what this project solves and the technologies used.</p>
+                    <a href="#">Case Study</a>
+                </article>
+                <article class="card">
+                    <h3>Project Two</h3>
+                    <p>Short overview of the challenge, implementation, and key outcomes.</p>
+                    <a href="#">Live Demo</a>
+                </article>
+                <article class="card">
+                    <h3>Project Three</h3>
+                    <p>Short overview describing your role, architecture, and performance impact.</p>
+                    <a href="#">Source Code</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="panel reveal">
+            <h2>Let us build something meaningful</h2>
+            <p>You can replace this with your contact text, location, and social links.</p>
+            <a class="btn btn-primary" href="mailto:{{ email }}">Email Me</a>
+        </section>
+    </main>
+
+    <footer class="wrap footer">
+        <p>© {% now "Y" %} {{ name }}. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
