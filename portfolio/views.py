@@ -3,7 +3,8 @@
 
 def home(request):
     context = {
-        "name": "Md Nayem Hossen",
+        "name": "Nayem Hossen",
         "email": "mdsabur9991@gmail.com",
     }
     return render(request, "index.html", context)
+
